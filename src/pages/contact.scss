@@ -1,0 +1,13 @@
+@media (min-width: 768px) {
+  .bg-fixed-md {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 500px) {
+  .bg-fixed-sm {
+    background-attachment: local;
+    background-position: center;
+    background-size: contain;
+  }
+}
