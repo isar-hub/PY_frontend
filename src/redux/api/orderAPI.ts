@@ -5,6 +5,7 @@ import {
   NewOrderRequest,
   OrderDetailsResponse,
   UpdateOrderRequest,
+  CancelOrderRequest
 } from "../../types/api-types";
 
 export const orderApi = createApi({
@@ -29,6 +30,14 @@ export const orderApi = createApi({
       }),
       invalidatesTags: ["orders"],
     }),
+    cancelOrder : builder.mutation<MessageResponse,CancelOrderRequest>({
+      query : ({orderId}) =>({
+        url:`cancel/${orderId}`,
+        method: "PUT"
+      }),
+      invalidatesTags: ["orders"],
+
+    }),
     deleteOrder: builder.mutation<MessageResponse, UpdateOrderRequest>({
       query: ({ userId, orderId }) => ({
         url: `${orderId}?id=${userId}`,
@@ -48,6 +57,7 @@ export const orderApi = createApi({
       query: (id) => id,
       providesTags: ["orders"],
     }),
+    
   }),
 });
 
@@ -57,5 +67,6 @@ export const {
   useDeleteOrderMutation,
   useMyOrdersQuery,
   useAllOrdersQuery,
+  useCancelOrderMutation,
   useOrderDetailsQuery,
 } = orderApi;

@@ -20,6 +20,7 @@
     "6pp": "^1.2.16",
     "axios": "^1.7.2",
     "chartjs": "^0.3.24",
+    "dotenv": "^16.4.5",
     "firebase": "^10.12.2",
     "flowbite": "^2.4.1",
     "flowbite-react": "^0.10.1",

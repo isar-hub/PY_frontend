@@ -1,10 +1,10 @@
-import { FaTrash } from "react-icons/fa";
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { useSelector } from "react-redux";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import {
-  useDeleteOrderMutation,
+  useCancelOrderMutation,
   useOrderDetailsQuery,
-  useUpdateOrderMutation,
+  
 } from "../redux/api/orderAPI";
 import { RootState } from "../redux/store";
 import { Order, OrderItem } from "../types/types";
@@ -33,9 +33,10 @@ import { Skeleton } from "../components/Loader";
     _id: "",
   
 };
+
   
   const OrderDetails = () => {
-    const { user } = useSelector((state: RootState) => state.userReducer);
+    useSelector((state: RootState) => state.userReducer);
   
     const params = useParams();
     const navigate = useNavigate();
@@ -55,100 +56,121 @@ import { Skeleton } from "../components/Loader";
       paymentMethod,
     } = data?.order || defaultData;
   
-    const [updateOrder] = useUpdateOrderMutation();
-    const [deleteOrder] = useDeleteOrderMutation();
+    const [cancelOrder] = useCancelOrderMutation();
   
     // console.log("data from transactionmngmnt-", orderItems);
   
     const updateHandler = async () => {
-      const res = await updateOrder({
-        userId: user?._id!,
+      const res = await cancelOrder({
         orderId: data?.order._id!,
       });
       responseToast(res, navigate, "/admin/transaction");
     };
   
-    const deleteHandler = async () => {
-      const res = await deleteOrder({
-        userId: user?._id!,
-        orderId: data?.order._id!,
-      });
-      responseToast(res, navigate, "/admin/transaction");
-    };
+
   
     if (isError) return <Navigate to={"/404"} />;
   
   
   return (
-    <div className="admin-container">
+    <div className="relative font-avenirCF">
     
-      <main className="">
+
         {isLoading ? (
           <Skeleton />
         ) : (
           <>
-            <section
-              style={{
-                padding: "2rem",
-              }}
-            >
-              <h2>Order Items</h2>
+          <main className="flex flex-col mx-5 md:mx-60 justify-between gap-16">
+          <div className="mt-16 hidden md:block">
+              <span className="text-base font-light">Orders</span>
+              <span> / </span>
+              <span className="text-base font-light">
+                {data?.order._id}
+              </span>
+            </div>
+            <div className="md:hidden flex items-center justify-start mt-5">
+              <Link to="/orders">
+                <span>Orders</span>
+              </Link>
+            </div>
+            <div className="w-full flex flex-col md:flex-row md:gap-10">
+              <section
+                className="overflow-y-auto w-full h-screen max-w-sm bg-white shadow-lg rounded-lg p-8 flex flex-col gap-4 relative"
+              >
+                <h1 className="text-center text-2xl">Order Items</h1>
+                {
+                  orderItems.map((i) =>(
+                    <ProductCard
+                    key={i._id}
+                    name={i.name}
+                    photo={i.photo}
+                    productId={i.productId}
+                    _id={i._id}
+                    quantity={i.quantity}
+                    price={i.price}
+                    />
 
-              {orderItems.map((i) => (
-                <ProductCard
-                  key={i._id}
-                  name={i.name}
-                  photo={i.photo}
-                  productId={i.productId}
-                  _id={i._id}
-                  quantity={i.quantity}
-                  price={i.price}
-                />
-              ))}
-            </section>
+                  ))
+                }
+                  <hr />
+                <span  className="ml-auto">
+                         = ₹{subtotal}
+                      </span>
 
-            <article className="shipping-info-card">
-              <button className="product-delete-btn" onClick={deleteHandler}>
-                <FaTrash />
-              </button>
-              <h1>Order Info</h1>
-              <h5>User Info</h5>
-              <p>Name: {name}</p>
-              <p>
-                Address:{" "}
-                {`${address}, ${city}, ${state}, ${country} ${pinCode}`}
-              </p>
-              <h5>Payment Method</h5>
-              <p>Payment Mode: {paymentMethod}</p>
-              <h5>Amount Info</h5>
-              <p>Subtotal: {subtotal}</p>
-              <p>Shipping Charges: {shippingCharges}</p>
-              <p>Tax: {tax}</p>
-              <p>Discount: {discount}</p>
-              <p>Total: {total}</p>
+              </section>
+              <section className="flex flex-col md:w-1/2">
+              <article className="min-h-full p-8 w-full max-w-md bg-white rounded-lg shadow-lg relative">
+                <h1 className="text-center text-2xl">Order Info</h1>
+                <h5 className="ml-2 mt-8 text-xl font-bold">User Info</h5>
+                <p className="m-2">Name: {name}</p>
+                <p className="m-2">
+                  Address:{" "}
+                  {`${address}, ${city}, ${state}, ${country} ${pinCode}`}
+                </p>
+                <h5 className="ml-2 mt-8 text-xl font-bold">Payment Method</h5>
+                <p className="m-2">Payment Mode: {paymentMethod}</p>
+                <h5 className="ml-2 mt-8 text-xl font-bold">Amount Info</h5>
+                <p className="m-2">Subtotal: {subtotal}</p>
+                <p className="m-2">Shipping Charges: {shippingCharges}</p>
+                <p className="m-2">Tax: {tax}</p>
+                <p className="m-2">Discount: {discount}</p>
+                <p className="m-2">Total: {total}</p>
 
-              <h5>Status Info</h5>
-              <p>
-                Status:{" "}
-                <span
-                  className={
-                    status === "Delivered"
-                      ? "purple"
-                      : status === "Shipped"
-                      ? "green"
-                      : "red"
-                  }
+                <h5 className="ml-2 mt-8 text-xl font-bold">Status Info</h5>
+                <p className="m-2">
+                  Status:{" "}
+                  <span
+                    className={
+                      status === "Delivered"
+                        ? "text-purple-600"
+                        : status === "Shipped"
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }
+                  >
+                    {status}
+                  </span>
+                </p>
+                <button
+                  className="mt-8 mb-0 p-4 bg-blue-600 text-white w-full rounded-lg text-lg cursor-pointer hover:opacity-80"
+                  onClick={updateHandler}
+            
                 >
-                  {status}
-                </span>
-              </p>
-              <button className="shipping-btn" onClick={updateHandler}>
-                Cancel Order
-              </button>
-            </article>
+                  Cancel Order
+                </button>
+              </article>
+
+              </section>
+
+
+            </div>
+          </main>
+        
+
+            
           </>
         )}
-      </main>
+
     </div>
   );
 };
@@ -159,16 +181,10 @@ import { Skeleton } from "../components/Loader";
     quantity,
     productId,
   }: OrderItem) => (
-    <div className="transaction-product-card">
-      
-      <div>
-      <p>${productId}</p>
-
-      </div>
-      <img src={transformImage(photo)} alt={name} />
-
-      <Link to={`/product/${productId}`}>{name}</Link>
-      <span>
+    <div className="flex flex-row items-center gap-4">
+      <img src={transformImage(photo)} alt={name} className="w-16 h-16 object-cover rounded-sm" />
+      <Link to={`/product/${productId}`} className="text-blue-500 hover:text-blue-700">{name} </Link>
+      <span  className="ml-auto">
         ₹{price} X {quantity} = ₹{price * quantity}
       </span>
       

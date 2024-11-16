@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { CarouselButtonType, MyntraCarousel, Slider, useRating } from "6pp";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
@@ -179,13 +181,13 @@ const ProductDetails = () => {
                   </em>
                 </div>
                 <div className="flex items-center space-x-4 my-5">
-    <h3 className="text-gray-700 font-light text-2xl">
-        ₹{data?.product?.sellingPrice}
-    </h3>
-    <p className="text-gray-500 font-light text-2xl line-through">
-        ₹{data?.product?.price}
-    </p>
-</div>
+                    <h3 className="text-gray-700 font-light text-2xl">
+                        ₹{data?.product?.sellingPrice}
+                    </h3>
+                    <p className="text-gray-500 font-light text-2xl line-through">
+                        ₹{data?.product?.price}
+                    </p>
+                </div>
 
                 <article>
                   <div className="flex flex-col my-5">

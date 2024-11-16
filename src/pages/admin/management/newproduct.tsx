@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { useFileHandler } from "6pp";
 import { FormEvent, useState } from "react";
 import { useSelector } from "react-redux";
@@ -15,6 +16,7 @@ const NewProduct = () => {
   const [name, setName] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [price, setPrice] = useState<number>(1000);
+  const [sellingPrice, setSellingPrice] = useState<number>(1000);
   const [stock, setStock] = useState<number>(1);
 
   const [description, setDescription] = useState<string>("");
@@ -28,7 +30,7 @@ const NewProduct = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      if (!name || !price || stock < 0 || !category) return;
+      if (!name || !price || stock < 0 || !category || !sellingPrice) return;
 
       if (!photos.file || photos.file.length === 0) return;
 
@@ -36,7 +38,8 @@ const NewProduct = () => {
 
       formData.set("name", name);
       formData.set("description", description);
-      formData.set("price", price.toString());
+      formData.set("price", sellingPrice.toString());
+      formData.set("seliingPrice",price.toString());
       formData.set("stock", stock.toString());
       formData.set("category", category);
 
@@ -90,6 +93,16 @@ const NewProduct = () => {
                 placeholder="Price"
                 value={price}
                 onChange={(e) => setPrice(Number(e.target.value))}
+              />
+            </div>
+            <div>
+              <label>Selling Price</label>
+              <input
+                required
+                type="number"
+                placeholder="Price"
+                value={sellingPrice}
+                onChange={(e) => setSellingPrice(Number(e.target.value))}
               />
             </div>
             <div>

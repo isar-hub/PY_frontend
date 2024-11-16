@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { FaTrash } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
@@ -134,13 +135,13 @@ const TransactionManagement = () => {
                       ? "purple"
                       : status === "Shipped"
                       ? "green"
-                      : "red"
+                      : "red" 
                   }
                 >
                   {status}
                 </span>
               </p>
-              <button className="shipping-btn" onClick={updateHandler}>
+              <button className="shipping-btn" onClick={updateHandler} disabled={status === "Cancelled"}>
                 Process Status
               </button>
             </article>
@@ -160,11 +161,10 @@ const ProductCard = ({
 }: OrderItem) => (
   <div className="transaction-product-card">
     <img src={transformImage(photo)} alt={name} />
-
     <Link to={`/product/${productId}`}>{name}</Link>
-    <span>
+    <div>
       ₹{price} X {quantity} = ₹{price * quantity}
-    </span>
+    </div>
   </div>
 );
 

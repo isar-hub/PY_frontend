@@ -63,8 +63,8 @@ const Productmanagement = () => {
   
       if (nameUpdate) formData.set("name", nameUpdate);
       if (descriptionUpdate) formData.set("description", descriptionUpdate);
-      if (priceUpdate) formData.set("price", priceUpdate.toString());
-      if(sellingPriceUpdate) formData.set("sellingPrice",sellingPriceUpdate.toString())
+      if (priceUpdate) formData.set("sellingPrice", priceUpdate.toString());
+      if(sellingPriceUpdate) formData.set("price",sellingPriceUpdate.toString())
       if (stockUpdate !== undefined)
         formData.set("stock", stockUpdate.toString());
 
@@ -105,8 +105,8 @@ const Productmanagement = () => {
   useEffect(() => {
     if (data) {
       setNameUpdate(data.product.name);
-      setPriceUpdate(data.product.price);
-      setSellingPriceUpdate(data.product.sellingPrice);
+      setPriceUpdate(data.product.sellingPrice);
+      setSellingPriceUpdate(data.product.price);
       setStockUpdate(data.product.stock);
       setCategoryUpdate(data.product.category);
       setDescriptionUpdate(data.product.description);

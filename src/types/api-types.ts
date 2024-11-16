@@ -137,7 +137,9 @@ export type UpdateOrderRequest = {
   userId: string;
   orderId: string;
 };
-
+export type CancelOrderRequest = {
+  orderId:string;
+}
 export type DeleteUserRequest = {
   userId: string;
   adminUserId: string;
