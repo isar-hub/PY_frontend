@@ -11,7 +11,7 @@ import {
   useUpdateProductMutation,
 } from "../../../redux/api/productAPI";
 import { RootState } from "../../../redux/store";
-import { responseToast, transformImage } from "../../../utils/features";
+import { responseToast} from "../../../utils/features";
 import { Skeleton } from "../../../components/Loader";
 
 const Productmanagement = () => {

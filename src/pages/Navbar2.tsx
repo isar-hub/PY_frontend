@@ -1,3 +1,4 @@
+/*************  ✨ Codeium Command 🌟  *************/
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -47,6 +48,7 @@ const Navbar2 = ({ user }: PropsType) => {
   useEffect(() => {
     if (productIsError) {
       const err = productError as CustomError;
+      toast.error(err?.data?.message || "Something went wrong");
       toast.error(err.data.message);
     }
   }, [productIsError, productError]);
@@ -347,3 +349,5 @@ const Navbar2 = ({ user }: PropsType) => {
 };
 
 export default Navbar2;
+
+/******  62919169-433d-4fb0-85ba-d03b2af925e9  *******/

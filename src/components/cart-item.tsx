@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { CartItem } from "../types/types";
 import { transformImage } from "../utils/features";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { BsPlus } from "react-icons/bs";
-import { PiMinusThin } from "react-icons/pi";
 
 type CartItemProps = {
   cartItem: CartItem;
