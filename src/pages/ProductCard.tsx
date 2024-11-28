@@ -28,6 +28,7 @@ export const ProductCard = ({
     !productId ||
     !price ||
     !name ||
+    !sellingPrice ||
     !photos ||
     !photos.length ||
     !stock ||
@@ -40,6 +41,7 @@ export const ProductCard = ({
     const cartItem: CartItem = {
       productId,
       price,
+      sellingPrice,
       name,
       photo: photos[0].url,
       stock,

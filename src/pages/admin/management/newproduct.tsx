@@ -28,6 +28,7 @@ const NewProduct = () => {
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     setIsLoading(true);
     try {
       if (!name || !price || stock < 0 || !category || !sellingPrice) return;
@@ -36,10 +37,11 @@ const NewProduct = () => {
 
       const formData = new FormData();
 
+      
       formData.set("name", name);
       formData.set("description", description);
-      formData.set("price", sellingPrice.toString());
-      formData.set("seliingPrice",price.toString());
+      formData.set("price", price.toString());
+      formData.set("sellingPrice",sellingPrice.toString());
       formData.set("stock", stock.toString());
       formData.set("category", category);
 

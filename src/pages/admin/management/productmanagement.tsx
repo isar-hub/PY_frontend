@@ -59,12 +59,12 @@ const Productmanagement = () => {
       
 
       formData.append("photosOrder", JSON.stringify(imageOrder));
-  
+
   
       if (nameUpdate) formData.set("name", nameUpdate);
       if (descriptionUpdate) formData.set("description", descriptionUpdate);
-      if (priceUpdate) formData.set("sellingPrice", priceUpdate.toString());
-      if(sellingPriceUpdate) formData.set("price",sellingPriceUpdate.toString())
+      if (priceUpdate) formData.set("price", priceUpdate.toString());
+      if(sellingPriceUpdate) formData.set("sellingPrice",sellingPriceUpdate.toString())
       if (stockUpdate !== undefined)
         formData.set("stock", stockUpdate.toString());
 
@@ -105,8 +105,8 @@ const Productmanagement = () => {
   useEffect(() => {
     if (data) {
       setNameUpdate(data.product.name);
-      setPriceUpdate(data.product.sellingPrice);
-      setSellingPriceUpdate(data.product.price);
+      setPriceUpdate(data.product.price);
+      setSellingPriceUpdate(data.product.sellingPrice);
       setStockUpdate(data.product.stock);
       setCategoryUpdate(data.product.category);
       setDescriptionUpdate(data.product.description);
@@ -166,7 +166,7 @@ const Productmanagement = () => {
               ) : (
                 <span className="red"> Not Available</span>
               )}
-              <h3>₹{price}</h3>
+              <h3>₹{sellingPrice}</h3>
             </section>
             <article>
               <button className="product-delete-btn" onClick={deleteHandler}>

@@ -20,7 +20,7 @@
   import Shipping from "./pages/shipping";
   import Orders from "./pages/orders";
   import Checkout from "./pages/checkout";
-  import OrderDetails from "./pages/order-details";
+  // import OrderDetails from "./pages/order-details";
   import NotFound from "./pages/not-found";
   import AgeVerification from "./components/AgeVerfication";
 
@@ -154,7 +154,7 @@
               <Route element={<ProtectedRoute isAuthenticated={!!user} />}>
                 <Route path="/shipping" element={<Shipping />} />
                 <Route path="/orders" element={<Orders/>} />
-                <Route path="/order/:id" element={<OrderDetails />} />
+                {/* <Route path="/order/:id" element={<OrderDetails />} /> */}
                 <Route path="/pay" element={<Checkout />} />
               </Route>
               <Route

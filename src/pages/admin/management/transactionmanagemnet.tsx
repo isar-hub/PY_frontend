@@ -101,8 +101,8 @@ const TransactionManagement = () => {
                   productId={i.productId}
                   _id={i._id}
                   quantity={i.quantity}
-                  price={i.price}
-                />
+                  price={i.price} 
+                  sellingPrice={i.sellingPrice}                />
               ))}
             </section>
 
@@ -158,12 +158,13 @@ const ProductCard = ({
   price,
   quantity,
   productId,
+  sellingPrice,
 }: OrderItem) => (
   <div className="transaction-product-card">
-    <img src={transformImage(photo)} alt={name} />
+    <img src={transformImage(photo[0])} alt={name} />
     <Link to={`/product/${productId}`}>{name}</Link>
     <div>
-      ₹{price} X {quantity} = ₹{price * quantity}
+      ₹{price} X {quantity} = ₹{sellingPrice * quantity}
     </div>
   </div>
 );

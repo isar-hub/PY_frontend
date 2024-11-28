@@ -101,14 +101,13 @@ import { Skeleton } from "../components/Loader";
                 {
                   orderItems.map((i) =>(
                     <ProductCard
-                    key={i._id}
-                    name={i.name}
-                    photo={i.photo}
-                    productId={i.productId}
-                    _id={i._id}
-                    quantity={i.quantity}
-                    price={i.price}
-                    />
+                      key={i._id}
+                      name={i.name}
+                      photo={i.photo}
+                      productId={i.productId}
+                      _id={i._id}
+                      quantity={i.quantity}
+                      price={i.price} sellingPrice={i.sellingPrice}                    />
 
                   ))
                 }
@@ -182,7 +181,7 @@ import { Skeleton } from "../components/Loader";
     productId,
   }: OrderItem) => (
     <div className="flex flex-row items-center gap-4">
-      <img src={transformImage(photo)} alt={name} className="w-16 h-16 object-cover rounded-sm" />
+      <img src={transformImage(photo[0])} alt={name} className="w-16 h-16 object-cover rounded-sm" />
       <Link to={`/product/${productId}`} className="text-blue-500 hover:text-blue-700">{name} </Link>
       <span  className="ml-auto">
         ₹{price} X {quantity} = ₹{price * quantity}

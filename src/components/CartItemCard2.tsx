@@ -14,7 +14,7 @@ const CartItemCard2 = ({
   incrementHandler,
   decrementHandler,
 }: CartItemProps) => {
-  const { photo, productId, name, price, quantity } = cartItem;
+  const { photo, productId, name, quantity,sellingPrice } = cartItem;
 
   return (
     <div className="flex items-start justify-start gap-5 py-4 border-b">
@@ -36,7 +36,7 @@ const CartItemCard2 = ({
           >
             {name}
           </Link>
-          <span className="text-sm font-normal text-black">₹{price}</span>
+          <span className="text-sm font-normal text-black">₹{sellingPrice}</span>
         </article>
 
         <div className="flex items-center border border-black">

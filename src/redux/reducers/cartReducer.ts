@@ -52,7 +52,7 @@ export const cartReducer = createSlice({
 
     calculatePrice: (state) => {
       const subtotal = state.cartItems.reduce(
-        (total, item) => total + item.price * item.quantity,
+        (total, item) => total + item.sellingPrice * item.quantity,
         0
       );
 

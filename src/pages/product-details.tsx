@@ -212,6 +212,7 @@ const ProductDetails = () => {
                           stock: data?.product?.stock!,
                           quantity,
                           photo: data?.product?.photos[0].url || "",
+                          sellingPrice: data?.product?.sellingPrice!
                         })
                       }
                     >
@@ -222,10 +223,11 @@ const ProductDetails = () => {
                         addToCartHandler({
                           productId: data?.product?._id!,
                           name: data?.product?.name!,
-                          price: data?.product?.price!,
+                          price: data?.product?.sellingPrice!,
                           stock: data?.product?.stock!,
                           quantity,
                           photo: data?.product?.photos[0].url || "",
+                          sellingPrice: data?.product?.sellingPrice!
                         });
                         navigate("/cart");
                       }}

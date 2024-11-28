@@ -37,7 +37,7 @@ const CartSidebar = forwardRef<HTMLDivElement, CartSidebarProps>(
     // Calculate subtotal dynamically using useMemo
     const subtotal = useMemo(() => {
       return cartItems.reduce(
-        (acc, item) => acc + item.price * item.quantity,
+        (acc, item) => acc + item.sellingPrice * item.quantity,
         0
       );
     }, [cartItems]);

@@ -1,0 +1,86 @@
+@import "mixin";
+
+.product{
+    padding:30px 0;
+    &-input{
+      width:50%;
+      margin-right: auto;
+      margin-left: auto;
+      margin-bottom:10px;
+      padding-left:5px;
+      display: block;
+      transition:all .5s ease;
+      &:focus{
+        width: 55%
+      }
+      @include max-width(lg){
+        width:80%;
+        &:focus{
+          width: 90%
+        }
+      }
+      @include max-width(md){
+        width:80%;
+        &:focus{
+          width: 90%
+        }
+      }
+    }
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr) ;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    @include max-width(lg) {
+        grid-template-columns: repeat(2, 1fr); // Consolidated for lg and md
+      }
+    
+      @include max-width(xl) {
+        grid-template-columns: repeat(1, 1fr); // Single column for xl
+      }
+}
+.card {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0px 0px 5px 2px rgba(204, 204, 204, 1);
+    transition: box-shadow, transform 0.5s ease;
+    &:hover{
+      box-shadow: 0px 0px 5px 5px rgba(204, 204, 204, 1);
+      transform: scale(0.95);
+    }
+    h5{
+      margin: 10px 0;
+    }
+    &-image{
+      width: 100%;
+      max-width: 50%;
+    }
+    &-description{
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+    &-price{
+      font-weight: bold;
+      font-size:13px;
+    }
+    &-detail{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size:13px;
+      @include max-width(md){
+        flex-direction: column;
+        align-items:flex-start;
+      }
+    }
+    @include max-width(md){
+      max-width:100%;
+    }
+  }
