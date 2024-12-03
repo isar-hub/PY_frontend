@@ -1,4 +1,8 @@
-import bedroom_accessories from "../assets/new_banner.jpeg";
+import slider_img_1 from "../assets/slider_img_1.jpg";
+import slider_img_2 from "../assets/slider_img_2.jpg";
+import slider_img_3 from "../assets/slider_img_3.jpg";
+import "react-slideshow-image/dist/styles.css";
+import { Slide } from "react-slideshow-image";
 import sex_toys_for_women from "../assets/sex_toys_for_women.jpg";
 import sex_toys_for_women2 from "../assets/sextoysforwomen.jpg";
 import adult_toys from "../assets/adult toys.png";
@@ -6,70 +10,22 @@ import sex_toys_for_lgbtq from "../assets/sex toys for lgbtq.png";
 import ProductSlider from "../pages/Slider";
 import { Link } from "react-router-dom";
 import Footer from "../pages/footer-section";
-
 function HomeLayout() {
+  const images = [slider_img_1, slider_img_2, slider_img_3];
+  const text1 = ["Your Pleasure, Perfectly", "Secretly Worn,", "No One "];
+  const text2 = ["Priced. Up to 45% Off", "Deeply Felt.", "Will Know !"];
   return (
     <div className="w-full h-full overflow-x-hidden font-avenirCF ">
-      <section className="w-full md:h-[736px]  relative overflow-hidden">
-        <div className="h-72 md:h-full w-full">
-          <img
-            src={bedroom_accessories}
-            alt="banner"
-            className="object-fill w-full h-full"
-          />
-        </div>
-
-        <div className="absolute top-24 left-4 md:top-40 md:left-14 flex items-center md:top-1/6 ">
-          <h1 className="text-white  md:text-6xl md:text-start">
-            <div className="hidden md:block">
-              <div className="flex flex-col gap-8 ml-80 mt-28 font-semibold">
-                <span className="bg-transparent font-libreBaskervilleCF text-shadow-sm">
-                  Your Pleasure, Perfectly
-                </span>
-                <span className="bg-transparent font-libreBaskervilleCF">
-                  Priced. Now 45% Off 
-                </span>
-              </div>
-              <button className="group bg-[#5E5E4A] ml-[590px] px-8 text-xs py-2 mt-10 hover:bg-gray-200 hover:border border-black group-hover:text-black">
-            <Link to={"/product-listing"}>
-              <p className="text-white font-thin font-avenirCF text-sm group-hover:text-black">
-                Shop Now
-              </p>
-            </Link>
-          </button>
-            </div>
-            <div className="md:hidden text-start font-libreBaskervilleCF text-[25px]  -mt-5 font-semibold">
-              <div className="flex flex-col gap-2 ">
-                <span className="bg-transparent font-libreBaskervilleCF">
-                  Your Pleasure, Perfectly
-                </span>
-                <span className="bg-transparent font-libreBaskervilleCF">
-                Priced. Now 45% Off 
-                </span>
-             
-
-              </div>
-              <button className="group bg-[#5E5E4A] px-8 text-xs py-3 mt-6 ml-36 hover:bg-gray-200 hover:border border-black group-hover:text-black">
-            <Link to={"/product-listing"}>
-              <p className="text-white font-thin font-avenirCF text-lg group-hover:text-black">
-                Shop Now
-              </p>
-            </Link>
-          </button>
-            </div>
-          </h1>
-        </div>
-      </section>
+      <Slider slideImages={images} text1={text1} text2={text2} />
 
       <div className="flex justify-center max-w-full">
         <h1 className="hidden md:block text-2xl py-10 md:text-3xl lg:text-4xl md:my-20 font-avenirCF tracking-widest font-thin leading-loose">
           Exceptional Sex Toys for Women
         </h1>
         <h1 className="md:hidden text-2xl py-10 md:text-3xl lg:text-4xl md:my-20 font-avenirCF tracking-widest font-thin leading-tight">
-        <span>Exceptional Sex Toys for</span>
-        <br />
-        <span>Women</span>
-
+          <span>Exceptional Sex Toys for</span>
+          <br />
+          <span>Women</span>
         </h1>
       </div>
 
@@ -174,3 +130,57 @@ function HomeLayout() {
 }
 
 export default HomeLayout;
+
+interface SliderProps {
+  slideImages: string[];
+  text1: string[];
+  text2: string[];
+}
+
+const Slider: React.FC<SliderProps> = ({ slideImages, text1, text2 }) => (
+  <div className="container">
+    <Slide easing="ease">
+      {slideImages.map((slide, index) => (
+        <section className="slidestyle relative" key={index}>
+          {/* Background Image */}
+          <div
+            className="w-full h-[400px] md:h-[600px] bg-cover bg-center"
+            style={{ backgroundImage: `url(${slide})` }}
+          ></div>
+
+          {/* Overlay Text */}
+          <div className="absolute top-24 left-4 md:top-0 md:left-14 flex items-center md:top-1/6 ">
+            {/* Desktop View */}
+            <div className="hidden md:flex flex-col items-start gap-4 text-white">
+              <h1 className="text-4xl md:text-6xl font-libreBaskervilleCF font-semibold text-shadow-md">
+                {text1[index]}
+              </h1>
+              <h1 className="text42xl md:text-6xl font-libreBaskervilleCF font-semibold text-shadow-md ">
+                {" "}
+                {text2[index]}
+              </h1>
+              <Link to="/product-listing">
+                <button className="bg-[#5E5E4A] px-8  py-3 mt-4 hover:bg-gray-200 hover:border border-black hover:text-black text-white text-sm md:text-lg">
+                  Shop Now
+                </button>
+              </Link>
+            </div>
+
+            {/* Mobile View */}
+            <div className="md:hidden flex flex-col items-left gap-2">
+              <h1 className="text-2xl font-libreBaskervilleCF font-semibold">
+                Your Pleasure, Perfectly
+              </h1>
+              <h2 className="text-lg font-thin"> Priced. Now 45% Off</h2>
+              <Link to="/product-listing">
+                <button className="bg-[#5E5E4A] px-6 py-2 mt-2 hover:bg-gray-200 hover:border border-black hover:text-black text-white text-sm">
+                  Shop Now
+                </button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      ))}
+    </Slide>
+  </div>
+);
