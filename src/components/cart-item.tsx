@@ -19,30 +19,24 @@ const CartItemCard = ({
   const { photo, productId, name, sellingPrice, quantity } = cartItem;
 
   return (
-    <div className="flex items-start justify-start gap-5 py-4 border-b">
+    <div className="flex flex-wrap items-center justify-end gap-5 py-4 border-b w-full">
       <img
         src={transformImage(photo, 400)}
         alt={name}
-        className="w-24 md:w-28 h-24 md:h-28 object-contain"
+        className="w-24 md:w-24 h-24 md:h-28 object-contain"
       />
 
-      <div className="flex flex-col items-start gap-2 md:flex-row md:gap-72 md:items-center ">
-        <div className=" flex flex-row items-start">
-          <article className="flex flex-col justify-start gap-2 w-40">
-            <Link
-              to={`/product/${productId}`}
-              className="text-base font-normal text-black hover:text-blue-500 "
-            >
-              {name}
-            </Link>
-            <span className="text-sm font-normal text-black">₹{sellingPrice}</span>
-          </article>
-          <button
-              onClick={() => removeHandler(productId)}
-              className="text-gray-700 hover:text-red-600 mx-10"
-            >
-              <RiDeleteBinLine size={18} />
-            </button>
+      <div className="flex flex-col md:flex-row gap-2 md:gap-12 w-full flex-1">
+        <div className="flex flex-col justify-start gap-2 w-full flex-1">
+          <Link
+            to={`/product/${productId}`}
+            className="text-base font-normal text-black hover:text-blue-500"
+          >
+            {name}
+          </Link>
+          <span className="text-sm font-normal text-black">
+            ₹{sellingPrice}
+          </span>
         </div>
 
         <div className="flex items-center justify-end">
@@ -61,18 +55,17 @@ const CartItemCard = ({
               +
             </button>
           </div>
-          
-            <div className="hidden md:block w-32 px-8">
-              <span>₹{sellingPrice}</span>
-            </div>
 
-            <button
-              onClick={() => removeHandler(productId)}
-              className="text-gray-700 hover:text-red-600 mx-10 hidden md:block"
-            >
-              <RiDeleteBinLine size={18} />
-            </button>
-          
+          <div className="hidden md:block w-32 px-8">
+            <span>₹{sellingPrice}</span>
+          </div>
+
+          <button
+            onClick={() => removeHandler(productId)}
+            className="text-gray-700 hover:text-red-600 mx-10 hidden md:block"
+          >
+            <RiDeleteBinLine size={18} />
+          </button>
         </div>
       </div>
     </div>

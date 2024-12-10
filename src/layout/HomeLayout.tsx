@@ -6,7 +6,7 @@ import { Slide } from "react-slideshow-image";
 import sex_toys_for_women from "../assets/sex_toys_for_women.jpg";
 import sex_toys_for_women2 from "../assets/sextoysforwomen.jpg";
 import adult_toys from "../assets/adult toys.png";
-import sex_toys_for_lgbtq from "../assets/sex toys for lgbtq.png";
+import sex_toys_healthy_relation from "../assets/sex_toys_healthy_relation.jpg";
 import ProductSlider from "../pages/Slider";
 import { Link } from "react-router-dom";
 import Footer from "../pages/footer-section";
@@ -105,18 +105,17 @@ function HomeLayout() {
 
       <div className="flex flex-col items-center justify-between">
         <h3 className="text-2xl md:text-[40px] mt-8 md:mt-32 font-thin font-avenirCF text-nowrap">
-          PLEASURE FOR EVERYONE
+          Sex Toys for Couples:Connect Deeper
         </h3>
         <p className="text-center overflow-hidden max-w-full lg:max-w-[42rem] py-8 px-4 font-avenirCF font-normal text-[17px] leading-relaxed tracking-wide">
-          At Pleasure Yourself, we celebrate your journey to self-discovery. As
-          pioneers in personalized adult products for the LGBTQ+ community,
-          we're proud to support your unique identity and desires. With our
-          curated selection of sex toys and adult pleasures, find a safe space
-          to explore and indulge in being yourself. Join us on this empowering
-          journey, because your pleasure is our priority.
+          Check out our exciting new range of couple sex toys to enhance your
+          intimate fun! Now with features of remote and application control,
+          pleasure can be discovered irrespective of the distance. Learn how
+          it’s possible to find joy in togetherness as well as in loneliness,
+          longing, and even separation.
         </p>
         <img
-          src={sex_toys_for_lgbtq}
+          src={sex_toys_healthy_relation}
           className="w-full lg:w-[55rem] h-auto object-cover object-center px-5"
           alt="footerImage"
         />
@@ -152,10 +151,10 @@ const Slider: React.FC<SliderProps> = ({ slideImages, text1, text2 }) => (
           <div className="absolute top-24 left-4 md:top-0 md:left-14 flex items-center md:top-1/6 ">
             {/* Desktop View */}
             <div className="hidden md:flex flex-col items-start gap-4 text-white">
-              <h1 className="text-4xl md:text-6xl font-libreBaskervilleCF font-semibold text-shadow-md">
+              <h1 className="text-4xl md:text-6xl font-libreBaskervilleCF font-semibold drop-shadow-xl">
                 {text1[index]}
               </h1>
-              <h1 className="text42xl md:text-6xl font-libreBaskervilleCF font-semibold text-shadow-md ">
+              <h1 className="text-4xl md:text-6xl font-libreBaskervilleCF font-semibold drop-shadow-xl">
                 {" "}
                 {text2[index]}
               </h1>
@@ -167,11 +166,14 @@ const Slider: React.FC<SliderProps> = ({ slideImages, text1, text2 }) => (
             </div>
 
             {/* Mobile View */}
-            <div className="md:hidden flex flex-col items-left gap-2">
-              <h1 className="text-2xl font-libreBaskervilleCF font-semibold">
-                Your Pleasure, Perfectly
+            <div className="md:hidden md:flex flex-col items-start gap-2 text-white">
+              <h1 className="text-2xl font-libreBaskervilleCF font-semibold drop-shadow-xl">
+                {text1[index]}
               </h1>
-              <h2 className="text-lg font-thin"> Priced. Now 45% Off</h2>
+              <h1 className="text-2xl font-libreBaskervilleCF font-semibold drop-shadow-xl">
+                {" "}
+                {text2[index]}
+              </h1>
               <Link to="/product-listing">
                 <button className="bg-[#5E5E4A] px-6 py-2 mt-2 hover:bg-gray-200 hover:border border-black hover:text-black text-white text-sm">
                   Shop Now

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { CarouselButtonType, MyntraCarousel, Slider, useRating } from "6pp";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import {
   FaArrowLeftLong,
@@ -118,6 +118,11 @@ const ProductDetails = () => {
   };
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Scroll to the top of the page whenever the data changes
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [data]);
+
   return (
     <div className="relative font-avenirCF">
       {isLoading ? (
@@ -181,12 +186,12 @@ const ProductDetails = () => {
                   </em>
                 </div>
                 <div className="flex items-center space-x-4 my-5">
-                    <h3 className="text-gray-700 font-light text-2xl">
-                        ₹{data?.product?.sellingPrice}
-                    </h3>
-                    <p className="text-gray-500 font-light text-2xl line-through">
-                        ₹{data?.product?.price}
-                    </p>
+                  <h3 className="text-gray-700 font-light text-2xl">
+                    ₹{data?.product?.sellingPrice}
+                  </h3>
+                  <p className="text-gray-500 font-light text-2xl line-through">
+                    ₹{data?.product?.price}
+                  </p>
                 </div>
 
                 <article>
@@ -212,7 +217,7 @@ const ProductDetails = () => {
                           stock: data?.product?.stock!,
                           quantity,
                           photo: data?.product?.photos[0].url || "",
-                          sellingPrice: data?.product?.sellingPrice!
+                          sellingPrice: data?.product?.sellingPrice!,
                         })
                       }
                     >
@@ -227,7 +232,7 @@ const ProductDetails = () => {
                           stock: data?.product?.stock!,
                           quantity,
                           photo: data?.product?.photos[0].url || "",
-                          sellingPrice: data?.product?.sellingPrice!
+                          sellingPrice: data?.product?.sellingPrice!,
                         });
                         navigate("/cart");
                       }}

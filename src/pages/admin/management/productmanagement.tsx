@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { useFileHandler } from "6pp";
 import { FormEvent, useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
@@ -11,7 +12,7 @@ import {
   useUpdateProductMutation,
 } from "../../../redux/api/productAPI";
 import { RootState } from "../../../redux/store";
-import { responseToast} from "../../../utils/features";
+import { responseToast } from "../../../utils/features";
 import { Skeleton } from "../../../components/Loader";
 
 const Productmanagement = () => {
@@ -31,19 +32,20 @@ const Productmanagement = () => {
       stock: 0,
       price: 0,
       description: "",
-      sellingPrice : 0
+      sellingPrice: 0,
     };
 
   const [btnLoading, setBtnLoading] = useState<boolean>(false);
   const [priceUpdate, setPriceUpdate] = useState<number>(price);
-  const [sellingPriceUpdate, setSellingPriceUpdate] = useState<number>(sellingPrice);
+  const [sellingPriceUpdate, setSellingPriceUpdate] =
+    useState<number>(sellingPrice);
   const [stockUpdate, setStockUpdate] = useState<number>(stock);
   const [nameUpdate, setNameUpdate] = useState<string>(name);
   const [categoryUpdate, setCategoryUpdate] = useState<string>(category);
   const [descriptionUpdate, setDescriptionUpdate] =
     useState<string>(description);
-    const [imageOrder, setImageOrder] = useState(photos);
-    const [draggedIndex, setDraggedIndex] = useState(0);
+  const [imageOrder, setImageOrder] = useState(photos);
+  const [draggedIndex, setDraggedIndex] = useState(0);
 
   const [updateProduct] = useUpdateProductMutation();
   const [deleteProduct] = useDeleteProductMutation();
@@ -56,15 +58,14 @@ const Productmanagement = () => {
     setBtnLoading(true);
     try {
       const formData = new FormData();
-      
 
       formData.append("photosOrder", JSON.stringify(imageOrder));
 
-  
       if (nameUpdate) formData.set("name", nameUpdate);
       if (descriptionUpdate) formData.set("description", descriptionUpdate);
       if (priceUpdate) formData.set("price", priceUpdate.toString());
-      if(sellingPriceUpdate) formData.set("sellingPrice",sellingPriceUpdate.toString())
+      if (sellingPriceUpdate)
+        formData.set("sellingPrice", sellingPriceUpdate.toString());
       if (stockUpdate !== undefined)
         formData.set("stock", stockUpdate.toString());
 
@@ -76,15 +77,13 @@ const Productmanagement = () => {
         });
       }
 
-
-
       const res = await updateProduct({
         formData,
         userId: user?._id!,
         productId: data?.product._id!,
       });
 
-      console.log(res)
+      console.log(res);
       responseToast(res, navigate, "/admin/product");
     } catch (error) {
       console.log(error);
@@ -110,29 +109,28 @@ const Productmanagement = () => {
       setStockUpdate(data.product.stock);
       setCategoryUpdate(data.product.category);
       setDescriptionUpdate(data.product.description);
-      setImageOrder(data.product.photos)
+      setImageOrder(data.product.photos);
     }
   }, [data]);
 
   if (isError) return <Navigate to={"/404"} />;
- 
 
-    const handleDragStart = (index : number) => {
-        setDraggedIndex(index);
-    };
+  const handleDragStart = (index: number) => {
+    setDraggedIndex(index);
+  };
 
-    const handleDragEnter = (index : number) => {
-        // Rearrange images as they are dragged over each other
-        const newOrder = [...imageOrder];
-        const [movedImage] = newOrder.splice(draggedIndex, 1);
-        newOrder.splice(index, 0, movedImage);
-        setDraggedIndex(index);
-        setImageOrder(newOrder);
-    };
+  const handleDragEnter = (index: number) => {
+    // Rearrange images as they are dragged over each other
+    const newOrder = [...imageOrder];
+    const [movedImage] = newOrder.splice(draggedIndex, 1);
+    newOrder.splice(index, 0, movedImage);
+    setDraggedIndex(index);
+    setImageOrder(newOrder);
+  };
 
-    const handleDrop = async () => {
-      setDraggedIndex(-1);
-    };
+  const handleDrop = async () => {
+    setDraggedIndex(-1);
+  };
 
   return (
     <div className="admin-container">
@@ -145,8 +143,8 @@ const Productmanagement = () => {
             <section>
               <strong>ID - {data?.product._id}</strong>
               <div className="grid grid-cols-3 gap-4">
-            {imageOrder.map((photo, index) => (
-                <img
+                {imageOrder.map((photo, index) => (
+                  <img
                     key={photo.url}
                     src={photo.url}
                     alt={`Product ${index + 1}`}
@@ -155,10 +153,10 @@ const Productmanagement = () => {
                     onDragStart={() => handleDragStart(index)}
                     onDragEnter={() => handleDragEnter(index)}
                     onDragEnd={handleDrop}
-                />
-            ))}
-        </div>
-              
+                  />
+                ))}
+              </div>
+
               {/* <img src={transformImage(photos[0]?.url)} alt="Product" /> */}
               <p>{name}</p>
               {stock > 0 ? (
@@ -208,7 +206,9 @@ const Productmanagement = () => {
                     type="number"
                     placeholder="Selling Price"
                     value={sellingPriceUpdate}
-                    onChange={(e) => setSellingPriceUpdate(Number(e.target.value))}
+                    onChange={(e) =>
+                      setSellingPriceUpdate(Number(e.target.value))
+                    }
                   />
                 </div>
                 <div>

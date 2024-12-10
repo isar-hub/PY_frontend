@@ -5,6 +5,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import React from "react";
 
 interface Product {
   name: string;
@@ -50,11 +51,18 @@ export const ProductpageAccordion = ({
             id="panel1-header"
           >
             <Typography fontSize={15}>
-              <span className="font-avenirCF font-medium">PRODUCT INFO</span>
+              <span className="font-avenirCF font-bold">PRODUCT INFO</span>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography fontSize={15}>{product.description}</Typography>
+            <Typography fontSize={15}>
+              {product.description.split(/\r?\n/).map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </Typography>{" "}
           </AccordionDetails>
         </Accordion>
         <Accordion
@@ -67,9 +75,7 @@ export const ProductpageAccordion = ({
             id="panel2-header"
           >
             <Typography fontSize={15}>
-              <p className="font-avenirCF font-medium">
-                RETURN & REFUND POLICY
-              </p>
+              <p className="font-avenirCF font-bold">RETURN & REFUND POLICY</p>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -94,7 +100,7 @@ export const ProductpageAccordion = ({
             id="panel3-header"
           >
             <Typography fontSize={15} className="font-avenirCF">
-              <p className="font-avenirCF font-medium">SHIPPING INFO</p>
+              <p className="font-avenirCF font-bold">SHIPPING INFO</p>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
