@@ -68,7 +68,7 @@ function HomeLayout() {
             MOST POPULAR
           </h1>
         </div>
-        <ProductSlider text={"All Products"} />
+        <ProductSlider text={""} />
       </div>
       <div className="px-10 xl:ml-32 lg:px-32 flex flex-col lg:flex-row w-full h-full items-start md:space-x-10">
         <div className="w-full lg:w-2/5 h-full  lg:mt-[-80px] ">

@@ -9,8 +9,8 @@ function Footer() {
             <div className="flex flex-col items-center md:items-start space-y-3 md:space-y-1">
               <Link to="/product-listing">
                 <h1 className="text-2xl md:text-2xl pb-4">SHOP</h1>
-                <p className="text-sm">WOMEN</p>
-                <p className="text-sm ">LGBTQ+</p>
+                <p className="text-sm">Women</p>
+                <p className="text-sm ">Couples</p>
               </Link>
             </div>
           </div>
@@ -36,7 +36,7 @@ function Footer() {
         <div className="flex flex-col-reverse md:flex-col ">
           <div className="pt-20 flex flex-col items-start gap-3">
             <div className="flex flex-col items-center md:items-start space-y-3 md:space-y-1">
-              <h1 className="text-[17px] md:text-2xl pb-4">PLEASUREYOURSELF</h1>
+              <h1 className="text-[17px] md:text-2xl pb-4">PLEASURE YOURSELF</h1>
 
               <Link to={"/blog-listing"}>
                 <button className="text-sm  font-thin">BLOG</button>

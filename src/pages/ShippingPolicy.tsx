@@ -8,7 +8,7 @@ const ShippingPolicy = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             RETURN & EXCHANGE
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             Due, to our commitment to maintaining hygiene and safety protocols
             we are unable to accommodate returns for adult products once the
             seal is broken or the item has been used, as they become unsellable.
@@ -22,7 +22,7 @@ const ShippingPolicy = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             SHIPPING & CUSTOMS
           </h1>
-          <p className="">
+          <p className="font-arialCF">
             All the products on Pleasure Yourself are 100% custom cleared. Also
             the prices mentioned on the website is the final amount that you
             will have to pay for product. Prices mentioned on the website

@@ -31,6 +31,8 @@ const CheckOutForm = () => {
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [paymentMethod, setPaymentMethod] = useState<string>("Online");
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [showDiscalaimer, setShowCodDisclaimer] = useState<boolean>(false);
+
 
   const totalBeforePayment = paymentMethod === "COD" ? total + 99 : total;
 
@@ -235,7 +237,11 @@ const CheckOutForm = () => {
                 name="paymentMethod"
                 value="Online"
                 checked={paymentMethod === "Online"}
-                onChange={() => setPaymentMethod("Online")}
+                onChange={() =>{
+                   setPaymentMethod("Online");
+                   setShowCodDisclaimer(false);
+                }
+                  }
                 className="ml-[20px]"
               />
               <span className="font-avenirCF text-left pl-2 text-sm">
@@ -258,7 +264,10 @@ const CheckOutForm = () => {
                 name="paymentMethod"
                 value="COD"
                 checked={paymentMethod === "COD"}
-                onChange={() => setPaymentMethod("COD")}
+                onChange={() => {
+                  setPaymentMethod("COD");
+                  setShowCodDisclaimer(true);
+                }}
                 className="ml-[20px]"
               />
               <span className="font-avenirCF text-left pl-2 text-sm">
@@ -267,6 +276,14 @@ const CheckOutForm = () => {
             </label>
           </div>
         </div>
+        {showDiscalaimer && (
+          <p className="text-sm md:text-base text-center font-avenirCF italic text-grey-600 leading-relaxed mt-1">
+          A handling fee of ₹101 is applicable for all COD purchases since extra
+          processing and verification is entailed. To avoid this fee, for quicker
+          dispatch, and a more hassle-free delivery, you can choose the prepaid
+          option.
+        </p>
+        )}
         <button type="submit" disabled={isProcessing}>
           {isProcessing ? "Processing..." : `Pay ${totalBeforePayment}`}
         </button>

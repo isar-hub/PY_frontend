@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import age_dialog from "../assets/Adult toys for 18+ Plus.png";
+import { Link } from "react-router-dom";
 
 const AgeVerification = () => {
   const [isVerified, setIsVerified] = useState(false);
@@ -50,11 +51,13 @@ const AgeVerification = () => {
           </button>
           <div className="text-xs text-blue-700 pt-4">
             <p>* By entering the website, you are agreeing to the</p>
-            <p>
-              <span className="underline decoration-solid">Terms of Use </span>
+            <Link to={"/terms-section"}>
+              <span onClick={handleVerify} className="underline decoration-solid">Terms of Use </span>
+              </Link>
               and{" "}
-              <span className="underline decoration-solid">Privacy Policy</span>
-            </p>
+              <Link to={"/privacy-section"}>
+              <span onClick={handleVerify} className="underline decoration-solid">Privacy Policy</span>
+              </Link> 
           </div>
         </div>
       </div>

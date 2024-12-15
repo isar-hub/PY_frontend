@@ -58,7 +58,7 @@ export type SearchProductsResponse = AllProductsResponse & {
 };
 
 export type SearchProductsRequest = {
-  price: number;
+  sellingPrice: number;
   page: number;
   category: string;
   search: string;

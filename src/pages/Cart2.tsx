@@ -125,7 +125,7 @@ export const Cart2 = () => {
               <h1>Cart is Empty</h1>
             )}
           </div>
-          <div className="flex mt-10 items-center">
+          {/* <div className="flex mt-10 items-center">
             <LiaTagSolid />
             <input
               type="text"
@@ -144,7 +144,7 @@ export const Cart2 = () => {
               <span className="text-red-500">
                 Invalid Coupon <VscError />
               </span>
-            ))}
+            ))} */}
         </main>
 
         <aside className="w-full md:w-2/5 pr-5 md:pr-20 max-h-screen overflow-hidden">
@@ -162,10 +162,10 @@ export const Cart2 = () => {
             </span>
           </div>
 
-          <div className="flex border-b pb-3">
+          {/* <div className="flex border-b pb-3">
             <h1 className="mr-auto">Discount</h1>
             <em className="text-red-500 ml-auto">- ₹{discount}</em>
-          </div>
+          </div> */}
           <div className="flex pt-4 pb-6">
             <h1 className="mr-auto">Total:</h1>
             <h1 className="ml-auto">₹{total}</h1>

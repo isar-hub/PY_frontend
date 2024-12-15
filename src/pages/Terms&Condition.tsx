@@ -12,7 +12,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             1. Introduction
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             Let Pleasureyourself, be your guide to pleasing yourself with
             customized adult toys and other sexual health products. Any access
             or use of this website implies your agreement to be bound by these
@@ -27,7 +27,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             2. Eligibility
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             You must be at least 18 years old or the legal age of majority in
             your jurisdiction to use our services. By using our site, you
             confirm that you meet these age requirements.
@@ -38,7 +38,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             3. Product Information
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             We strive to ensure accurate product descriptions and images.
             Personalized products are custom-made, and as such, we cannot accept
             returns or exchanges unless the product is defective or incorrect
@@ -50,7 +50,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             4. Ordering and Payment
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             Orders are subject to availability and confirmation of the order
             price. We accept various payment methods, including credit/debit
             cards and online payment systems. Prices are listed in INR and may
@@ -62,7 +62,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             5. Shipping and Delivery
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             Our goal is to process and dispatch the orders fairly quickly.
             Transit time is between 3-6 business days after being shipped,
             depending on the location and complexity of the order placed. Kindly
@@ -75,7 +75,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             6. Order Cancellation
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             Customers are allowed to cancel their order within 24 hours after it
             has been confirmed. This can be done by using the “Cancel Order”
             option on our website or the “Contact Us” form. No cancellations
@@ -87,7 +87,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             7. Returns and Refunds
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             Due to the intimate nature of our products, we do not accept returns
             or exchanges for personalized items under any circumstances, unless
             there was a defect or error on our part. Due to current health
@@ -102,7 +102,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             8. Privacy and Data Protection
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             We are committed to protecting your privacy. Our Privacy Policy
             outlines how we collect, use, and safeguard your personal
             information. By using our site, you consent to our data practices as
@@ -114,7 +114,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             9. Intellectual Property
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             All content on our site, including text, images, and logos, is the
             property of Pleasureyourself and may not be used without our
             explicit permission.
@@ -125,7 +125,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             10. Limitation of Liability
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             We are not liable for any indirect, incidental, or consequential
             damages arising from the use of our products or services. Our
             liability is limited to the amount paid for the product or service
@@ -137,7 +137,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             11. Changes to Terms
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             We may update these Terms and Conditions from time to time. Changes
             will be posted on this page, and your continued use of the site
             constitutes acceptance of the revised terms.
@@ -148,7 +148,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             12. Governing Law
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             These Terms and Conditions are governed by the laws of India. Any
             disputes arising from the use of our site will be resolved in the
             courts of Kolkata, India.
@@ -159,7 +159,7 @@ const TermsCondition = () => {
           <h1 className="text-4xl text-slate-600 text-left py-10 font-avenirCF font-medium">
             13. Contact Us
           </h1>
-          <p className="font-arialBlackCF">
+          <p className="font-arialCF">
             For any questions or concerns regarding these Terms and Conditions,
             please contact us at:
             <h3>Email: pleasureyourselfindia@gmail.com</h3>

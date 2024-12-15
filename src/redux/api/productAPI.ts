@@ -42,10 +42,10 @@ export const productAPI = createApi({
       SearchProductsResponse,
       SearchProductsRequest
     >({
-      query: ({ price, search, sort, category, page }) => {
+      query: ({ sellingPrice, search, sort, category, page }) => {
         let base = `all?search=${search}&page=${page}`;
 
-        if (price) base += `&price=${price}`;
+        if (sellingPrice) base += `&price=${sellingPrice}`;
         if (sort) base += `&sort=${sort}`;
         if (category) base += `&category=${category}`;
 

@@ -38,7 +38,7 @@ const Navbar2 = ({ user }: PropsType) => {
     sort: "",
     category: "",
     page: 1,
-    price: 1000000,
+    sellingPrice: 1000000,
   });
 
   const dispatch = useDispatch();
@@ -178,7 +178,7 @@ const Navbar2 = ({ user }: PropsType) => {
                       <SearchResult
                         productId={product._id}
                         name={product.name}
-                        price={product.price}
+                        price={product.sellingPrice}
                         photos={product.photos}
                       />
                     </Link>
@@ -307,7 +307,7 @@ const Navbar2 = ({ user }: PropsType) => {
                   value={search}
                   onChange={(e) => handleInputChange(e.target.value)}
                   onFocus={() => setSearchOpen(search.length > 0)}
-                  onBlur={() => setTimeout(() => setSearchOpen(false), 100)}
+                  onBlur={() => setTimeout(() => setSearchOpen(false), 10000000)}
                 />
                 {searchOpen && searchedData && searchedData.products && (
                   <div
@@ -321,7 +321,7 @@ const Navbar2 = ({ user }: PropsType) => {
                             to={`/product/${product._id}`}
                             onMouseDown={(e) => {
                               e.preventDefault();
-                              setTimeout(() => setSearchOpen(false), 100);
+                              setTimeout(() => setSearchOpen(false), 100000000000);
                             }}
                           >
                             <SearchResult
