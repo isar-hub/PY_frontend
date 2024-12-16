@@ -40,7 +40,7 @@ function ProductListing() {
     sort,
     category,
     page,
-    price: maxPrice,
+    sellingPrice: maxPrice,
   });
 
   const dispatch = useDispatch();

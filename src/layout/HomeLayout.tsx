@@ -1,5 +1,5 @@
 import slider_img_1 from "../assets/slider_img_1.jpg";
-import slider_img_2 from "../assets/slider_img_2.jpg";
+// import slider_img_2 from "../assets/slider_img_2.jpg";
 import slider_img_3 from "../assets/slider_img_3.jpg";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
@@ -11,9 +11,13 @@ import ProductSlider from "../pages/Slider";
 import { Link } from "react-router-dom";
 import Footer from "../pages/footer-section";
 function HomeLayout() {
-  const images = [slider_img_1, slider_img_2, slider_img_3];
-  const text1 = ["Your Pleasure, Perfectly", "Secretly Worn,", "No One "];
-  const text2 = ["Priced. Up to 45% Off", "Deeply Felt.", "Will Know !"];
+
+  const images = [slider_img_1,  slider_img_3];
+  const text1 = ["Your Pleasure, Perfectly", "No One "];
+  const text2 = ["Priced. Up to 45% Off", "Will Know !"];
+  // const images = [slider_img_1, slider_img_2, slider_img_3];
+  // const text1 = ["Your Pleasure, Perfectly", "Secretly Worn,", "No One "];
+  // const text2 = ["Priced. Up to 45% Off", "Deeply Felt.", "Will Know !"];
   return (
     <div className="w-full h-full overflow-x-hidden font-avenirCF ">
       <Slider slideImages={images} text1={text1} text2={text2} />

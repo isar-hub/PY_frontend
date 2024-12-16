@@ -1,18 +1,18 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { VscError } from "react-icons/vsc";
+// import axios from "axios";
+import { useEffect } from "react";
+// import { VscError } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { PiLockSimpleFill } from "react-icons/pi";
-import { LiaTagSolid } from "react-icons/lia";
+// import { LiaTagSolid } from "react-icons/lia";
 
 import {
   addToCart,
   calculatePrice,
-  discountApplied,
+//  discountApplied,
   removeCartItem,
 } from "../redux/reducers/cartReducer";
-import { RootState, server } from "../redux/store";
+import { RootState } from "../redux/store";
 import { CartItem } from "../types/types";
 import CartItemCard from "../components/cart-item";
 import Footer from "../pages/footer-section";
@@ -33,8 +33,8 @@ export const Cart2 = () => {
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.userReducer);
 
-  const [couponCode, setCouponCode] = useState<string>("");
-  const [isValidCouponCode, setIsValidCouponCode] = useState<boolean>(false);
+  // const [couponCode, setCouponCode] = useState<string>("");
+  // const [isValidCouponCode, setIsValidCouponCode] = useState<boolean>(false);
 
   const incrementHandler = (cartItem: CartItem) => {
     if (cartItem.quantity >= cartItem.stock) return;
@@ -50,39 +50,39 @@ export const Cart2 = () => {
     dispatch(removeCartItem(productId));
   };
 
-  useEffect(() => {
-    if (!couponCode) {
-      setIsValidCouponCode(false);
-      dispatch(discountApplied(0));
-      dispatch(calculatePrice());
-      return;
-    }
+  // useEffect(() => {
+  //   if (!couponCode) {
+  //     setIsValidCouponCode(false);
+  //     dispatch(discountApplied(0));
+  //     dispatch(calculatePrice());
+  //     return;
+  //   }
 
-    const { token: cancelToken, cancel } = axios.CancelToken.source();
+    // const { token: cancelToken, cancel } = axios.CancelToken.source();
 
-    const timeOutID = setTimeout(() => {
-      axios
-        .get(`${server}/api/v1/payment/discount?coupon=${couponCode}`, {
-          cancelToken,
-        })
-        .then((res) => {
-          dispatch(discountApplied(res.data.discount));
-          setIsValidCouponCode(true);
-          dispatch(calculatePrice());
-        })
-        .catch(() => {
-          dispatch(discountApplied(0));
-          setIsValidCouponCode(false);
-          dispatch(calculatePrice());
-        });
-    }, 1000);
+  //   const timeOutID = setTimeout(() => {
+  //     axios
+  //       .get(`${server}/api/v1/payment/discount?coupon=${couponCode}`, {
+  //         cancelToken,
+  //       })
+  //       .then((res) => {
+  //         dispatch(discountApplied(res.data.discount));
+  //         setIsValidCouponCode(true);
+  //         dispatch(calculatePrice());
+  //       })
+  //       .catch(() => {
+  //         dispatch(discountApplied(0));
+  //         setIsValidCouponCode(false);
+  //         dispatch(calculatePrice());
+  //       });
+  //   }, 1000);
 
-    return () => {
-      clearTimeout(timeOutID);
-      cancel();
-      setIsValidCouponCode(false);
-    };
-  }, [couponCode]);
+  //   return () => {
+  //     clearTimeout(timeOutID);
+  //     cancel();
+  //     setIsValidCouponCode(false);
+  //   };
+  // }, [couponCode]);
 
   useEffect(() => {
     dispatch(calculatePrice());
