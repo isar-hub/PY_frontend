@@ -140,13 +140,13 @@ function ProductListing() {
         </aside>
         <main className="flex-1 px-2">
           <h1 className="text-2xl font-bold mt-5 text-left">All Products</h1>
-          <div className="">
+          {/* <div className="">
             <p className="mt-2 mb-10 md:pr-60">
               This is your category description. It’s a great place to tell
               customers what this category is about, connect with your audience
               and draw attention to your products.
             </p>
-          </div>
+          </div> */}
 
           <div className="my-10 flex items-center justify-between">
             <div>

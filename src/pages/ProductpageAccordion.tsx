@@ -81,11 +81,13 @@ export const ProductpageAccordion = ({
           <AccordionDetails>
             <Typography>
               <p className="font-avenirCF">
-                I’m a Return and Refund policy. I’m a great place to let your
-                customers know what to do in case they are dissatisfied with
-                their purchase. Having a straightforward refund or exchange
-                policy is a great way to build trust and reassure your customers
-                that they can buy with confidence.
+                Due to the intimate nature of our products, we do not accept returns
+                or exchanges for personalized items under any circumstances, unless
+                there was a defect or error on our part. Due to current health
+                considerations, we shall only accept returns of unused, sealed
+                products. If this is the case, kindly notify us within 48 hours of
+                receiving your order. Refunds will be processed within 5-10 business
+                days to the original form of payment.
               </p>
             </Typography>
           </AccordionDetails>
@@ -106,11 +108,11 @@ export const ProductpageAccordion = ({
           <AccordionDetails>
             <Typography>
               <p className="font-avenirCF">
-                I'm a shipping policy. I'm a great place to add more information
-                about your shipping methods, packaging and cost. Providing
-                straightforward information about your shipping policy is a
-                great way to build trust and reassure your customers that they
-                can buy from you with confidence.
+                Our goal is to process and dispatch the orders fairly quickly.
+                Transit time is between 3-6 business days after being shipped,
+                depending on the location and complexity of the order placed. Kindly
+                also note that we do not take responsibility for delays as a result
+                of external conditions or shipping entities.
               </p>
             </Typography>
           </AccordionDetails>
