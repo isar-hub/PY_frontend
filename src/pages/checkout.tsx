@@ -87,6 +87,8 @@ const CheckOutForm = () => {
       }
     } else {
       try {
+        console.log("Creating Razorpay order...");
+
         const { data } = await axios.post(
           `${server}/api/v1/order/newRazorpayOrder`,
           { amount: total },
@@ -98,10 +100,15 @@ const CheckOutForm = () => {
           }
         );
 
+
         const razorpayKey = data?.razorpayKey;
         const orderId = data?.razorpayOrderId;
+        console.log("Received response from backend:", { razorpayKey, orderId });
+
 
         if (!razorpayKey) {
+          console.error("Razorpay key not found in backend response");
+
           throw new Error("Razorpay key not found in backend response");
         }
 
@@ -114,6 +121,8 @@ const CheckOutForm = () => {
           image: "",
           order_id: orderId,
           handler: async (response) => {
+            console.log("Razorpay payment successful. Response received:", response);
+
             const {
               razorpay_payment_id,
               razorpay_order_id,
@@ -128,7 +137,7 @@ const CheckOutForm = () => {
                 shippingInfo,
                 orderItems: cartItems,
                 subtotal,
-                tax,
+                tax:0,
                 discount,
                 shippingCharges,
                 total,
@@ -137,6 +146,8 @@ const CheckOutForm = () => {
             };
 
             try {
+
+              console.log(`payment data ${paymentData}`);
               const verificationRes = await axios.post(
                 `${server}/api/v1/order/paymentVerifiedOrder`,
                 paymentData,
@@ -149,13 +160,19 @@ const CheckOutForm = () => {
               );
 
               const verificationResult = verificationRes.data;
+              console.log("Verification response received:", verificationResult);
+
               console.log("verifi - ", verificationRes);
 
               if (verificationResult && verificationResult.success) {
+                console.log("Payment verified successfully.");
+
                 dispatch(resetCart());
 
                 setShowModal(true);
               } else {
+                console.error("Payment verification failed:", verificationResult);
+
                 const adaptedError: ResType = {
                   error: {
                     status: 400,
@@ -202,19 +219,24 @@ const CheckOutForm = () => {
           },
         };
 
+        console.log("Loading Razorpay SDK...");
         const loadRazorpay = await loadRazorpayScript();
 
         if (!loadRazorpay) {
+          console.error("Razorpay SDK failed to load.");
+
           toast.error("Razorpay SDK failed to load. Are you online?");
           setIsProcessing(false);
           return;
         }
 
+        console.log("Opening Razorpay checkout...");
+
         const paymentObject = new window.Razorpay(options);
         paymentObject.open();
         setIsProcessing(false);
       } catch (error) {
-        console.error("Error in Axios request:", error);
+        console.error("Error in Razorpay payment flow:", error);
         toast.error("Error initiating payment. Please try again later.");
         setIsProcessing(false);
       }
@@ -237,11 +259,11 @@ const CheckOutForm = () => {
                 name="paymentMethod"
                 value="Online"
                 checked={paymentMethod === "Online"}
-                onChange={() =>{
-                   setPaymentMethod("Online");
-                   setShowCodDisclaimer(false);
+                onChange={() => {
+                  setPaymentMethod("Online");
+                  setShowCodDisclaimer(false);
                 }
-                  }
+                }
                 className="ml-[20px]"
               />
               <span className="font-avenirCF text-left pl-2 text-sm">
@@ -273,17 +295,17 @@ const CheckOutForm = () => {
               <span className="font-avenirCF text-left pl-2 text-sm">
                 Cash on Delivery (COD)
               </span>
+              {showDiscalaimer && (
+                <div className="bg-yellow-50 text-gray-700 p-3 ms-10 me-5 mt-1 rounded-md">
+                  <p className="text-sm leading-relaxed">
+                    A handling fee of <strong>₹101</strong> is applicable for all COD purchases due to extra processing and verification. To avoid this fee, for quicker dispatch, and a more hassle-free delivery, you can choose a pay online now.
+                  </p>
+                </div>
+              )}
             </label>
           </div>
         </div>
-        {showDiscalaimer && (
-          <p className="text-sm md:text-base text-center font-avenirCF italic text-grey-600 leading-relaxed mt-1">
-          A handling fee of ₹101 is applicable for all COD purchases since extra
-          processing and verification is entailed. To avoid this fee, for quicker
-          dispatch, and a more hassle-free delivery, you can choose the prepaid
-          option.
-        </p>
-        )}
+
         <button type="submit" disabled={isProcessing}>
           {isProcessing ? "Processing..." : `Pay ${totalBeforePayment}`}
         </button>

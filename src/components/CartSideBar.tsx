@@ -47,19 +47,19 @@ const CartSidebar = forwardRef<HTMLDivElement, CartSidebarProps>(
         ref={ref}
         className={`fixed right-0 top-0 h-full bg-white shadow-lg z-50 transform ${
           isCartOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out`}
+        } transition-transform duration-300 ease-in-out overflow-y-auto`}
       >
-        <div className="">
-          <div className="bg-black py-8 flex justify-between items-center">
+        <div>
+          <div className="bg-black py-0 flex justify-between items-center">
             <button onClick={() => setIsCartOpen(false)} className="text-white">
               <MdArrowForwardIos className="ml-3 size-6" />
             </button>
-            <h2 className="text-2xl font-thin font-avenirCF text-white mx-auto">
+            <h2 className="text-2xl font-thin p-0 font-avenirCF text-white mx-auto">
               Cart
             </h2>
           </div>
 
-          <div className="min-h-[68vh] max-h-svh md:min-h-[640px] md:max-h-96 overflow-y-auto p-4 text-left">
+          <div className="min-h-[68vh] overflow-y-auto p-4 text-left">
             {cartItems.length > 0 ? (
               cartItems.map((i, idx) => (
                 <CartItemCard2
@@ -75,9 +75,9 @@ const CartSidebar = forwardRef<HTMLDivElement, CartSidebarProps>(
             )}
           </div>
 
-          <div className="flex flex-col items-start justify-center mb-5 ">
-            <div className="ml-9 font-avenirCF flex flex-col gap-2 ">
-              <h2 className="text-lg font-thin font-avenirCF text-black tracking-wide text-left">
+          <div className="flex flex-col items-start justify-center mb-5">
+            <div className="ml-9 font-avenirCF flex flex-col gap-2">
+              <h2 className="text-lg font-thin text-black tracking-wide text-left">
                 Subtotal
               </h2>
               <div className="text-xl items-start">
@@ -86,9 +86,10 @@ const CartSidebar = forwardRef<HTMLDivElement, CartSidebarProps>(
               </div>
             </div>
           </div>
-          <div className="">
-            <hr className="mb-5"/>
-            <div className="my-5 flex justify-center items-center px-2 md:px-10 py-2">
+
+          <div>
+            <hr className="mb-5" />
+            <div className="flex justify-center items-center px-2 md:px-10 py-2">
               <button
                 className="px-20 py-3 bg-[#5E5E4A] text-white text-xl"
                 onClick={() => {
@@ -103,6 +104,7 @@ const CartSidebar = forwardRef<HTMLDivElement, CartSidebarProps>(
         </div>
       </div>
     );
+
   }
 );
 

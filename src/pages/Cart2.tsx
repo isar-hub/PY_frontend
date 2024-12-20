@@ -87,6 +87,10 @@ export const Cart2 = () => {
   useEffect(() => {
     dispatch(calculatePrice());
   }, [cartItems]);
+  useEffect(() => {
+    // Scroll to the top of the page whenever the data changes
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [cartItems]);
 
   const handleCheckout = () => {
     if (cartItems.length === 0) {

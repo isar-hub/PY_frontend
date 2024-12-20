@@ -25,7 +25,7 @@ const NewProduct = () => {
   const [newProduct] = useNewProductMutation();
   const navigate = useNavigate();
 
-  const useFileHandler = (maxFiles: number = 10, maxSizeMB: number = 5) => {
+  const useFileHandler = (maxFiles: number = 10, maxSizeMB: number = 100) => {
     const [files, setFiles] = useState<File[]>([]);
     const [preview, setPreview] = useState<string[]>([]);
     const [error, setError] = useState<string | null>(null);

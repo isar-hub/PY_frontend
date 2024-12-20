@@ -14,7 +14,7 @@ const CartItemCard2 = ({
   incrementHandler,
   decrementHandler,
 }: CartItemProps) => {
-  const { photo, productId, name, quantity,sellingPrice } = cartItem;
+  const { photo, productId, name, quantity, sellingPrice } = cartItem;
 
   return (
     <div className="flex items-start justify-start gap-5 py-4 border-b">
@@ -39,17 +39,17 @@ const CartItemCard2 = ({
           <span className="text-sm font-normal text-black">₹{sellingPrice}</span>
         </article>
 
-        <div className="flex items-center border border-black">
+        <div className="flex items-center justify-between border border-black w-fit">
           <button
             onClick={() => decrementHandler(cartItem)}
             className="text-black hover:bg-gray-300 px-3 py-1"
           >
             -
           </button>
-          <p className="text-xs font-normal">{quantity}</p>
+          <p className="text-xs font-normal px-3">{quantity}</p>
           <button
             onClick={() => incrementHandler(cartItem)}
-            className=" text-black hover:bg-gray-300 px-3 py-1"
+            className="text-black hover:bg-gray-300 px-3 py-1"
           >
             +
           </button>
